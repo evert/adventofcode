@@ -12,9 +12,6 @@ for(const row of input.split('\n')) {
     continue;
   }
   const matches = row.match(regex);
-  if (!matches) {
-    console.log('No match! %s', row);
-  }
 
   const [, p1, p2, char, password] = matches;
   
