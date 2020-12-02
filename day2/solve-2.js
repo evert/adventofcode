@@ -21,13 +21,8 @@ for(const row of input.split('\n')) {
   const p1i = parseInt(p1, 10)-1;
   const p2i = parseInt(p2, 10)-1;
 
-  if (p1i > password.length-1 || p2i > password.length -1) {
-    continue;
-  }
-
   if ((password[p1i]===char) != (password[p2i]===char)) {
     successCount++;
-    console.log(row, p1i, password[p1i], p2i, password[p2i], password, password.length, char);
   }
 
 }
