@@ -16,8 +16,8 @@ function check(xStep, yStep) {
     posX = (posX + xStep) % lineLength;
 
   } while(posY < lines.length);
-  console.log('Right %i, down %i: %i', xStep, yStep, trees);
 
+  console.log('Right %i, down %i: %i', xStep, yStep, trees);
   return trees;
 
 }
@@ -31,10 +31,5 @@ const checks = [
   [1, 2],
 ];
 
-let total = 1;
-
-for(const c of checks) {
-  total *= check(...c);
-}
-
+const total = checks.reduce( (p, c) => check(...c) * p, 1);
 console.log('total', total);
