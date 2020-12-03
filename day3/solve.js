@@ -6,16 +6,17 @@ const lineLength = lines[0].length;
 function check(xStep, yStep) {
 
   let trees = 0;
-  let posY = yStep;
   let posX = xStep;
 
-  do {
+  for(
+    let posY = yStep, posX = xStep;
+    posY < lines.length;
+    posY += yStep, posX = (posX + xStep) % lineLength
+  ) {
 
     if (lines[posY][posX] === '#') trees++;
-    posY += yStep;
-    posX = (posX + xStep) % lineLength;
 
-  } while(posY < lines.length);
+  }
 
   console.log('Right %i, down %i: %i', xStep, yStep, trees);
   return trees;
