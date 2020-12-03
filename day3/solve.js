@@ -8,6 +8,7 @@ function check(xStep, yStep) {
   let trees = 0;
   let posX = xStep;
 
+  // In a weird mood with this loop
   for(
     let posY = yStep, posX = xStep;
     posY < lines.length;
