@@ -70,7 +70,6 @@ for(let ii=0; ii < instructions.length; ii++) {
   const result = run(newInstructions);
   if (result[0]) {
     console.log('Part 2 answer: %i', result[1]);
-    break;
   }
 
 }
