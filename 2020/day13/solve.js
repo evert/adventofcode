@@ -54,11 +54,7 @@ let found = 1;
 
 console.log(busIds);
 
-let iterations = 0;
-
 while(true) {
-
-  iterations++;
 
   ts+=step;
   const [checkBusId, checkOffset] = busIds[found]; 
@@ -71,4 +67,4 @@ while(true) {
 
 }
 
-console.log('Solved part 2 in %i iterations. Answer: %i', iterations, ts);
+console.log('Part 2', ts);
