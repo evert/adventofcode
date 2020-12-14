@@ -20,8 +20,6 @@ for(const check of inputs) {
     lowestBusId = check;
   }
 
-  console.log(check, nextBusTime, nextBusTime - offset);
-
 }
 
 console.log('Part 1', (lowest - offset) * lowestBusId);
@@ -51,8 +49,6 @@ let ts = 0;
 
 // How many have we found?
 let found = 1;
-
-console.log(busIds);
 
 while(true) {
 
