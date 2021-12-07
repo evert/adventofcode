@@ -13,8 +13,14 @@ let bestFuel2 = Infinity;
 
 for(let position=0; position <= max; position++) {
 
-  const fuel1 = crabs.reduce((fuel, crab) => fuel+Math.abs(position-crab),0);
-  const fuel2 = crabs.reduce((fuel, crab) => fuel+fuel2Calc(Math.abs(position-crab)),0);
+  const fuel1 = crabs.reduce(
+    (fuel, crab) => fuel+Math.abs(position-crab),
+    0
+  );
+  const fuel2 = crabs.reduce(
+    (fuel, crab) => fuel+fuel2Calc(Math.abs(position-crab)),
+    0
+  );
 
   console.log('%d -> %d %d', position, fuel1, fuel2);
 
