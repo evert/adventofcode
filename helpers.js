@@ -22,6 +22,20 @@ export function readInput() {
 }
 
 /**
+ * Reads the input as a csv-like thing.
+ *
+ * @returns {string[][]}
+ */
+export function readInputFields(fieldSeparator = ',') {
+
+  return readInput()
+    .split('\n')
+    .map(row => row.split(fieldSeparator));
+
+}
+
+
+/**
  * Given 2 strings, returns a new string with all the characters that appeared
  * in both.
  *
