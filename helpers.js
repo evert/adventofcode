@@ -16,7 +16,8 @@ export function countSubstr(haystack, needle) {
  */
 export function readInput() {
 
-  return fs.readFileSync('./input', 'utf-8').trim();
+  const file = process.env.SAMPLE ? './sampleinput' : './input';
+  return fs.readFileSync(file, 'utf-8').trim();
 
 }
 
