@@ -44,7 +44,7 @@ async function checkNewStats() {
 
     for(const [day, points] of Object.entries(dayPoints) as any) {
 
-      if (lastStats[name][day] !== points) {
+      if (lastStats[name] === undefined || lastStats[name][day] !== points) {
         await sendMessage(`${name} has just obtained ${points == 1 ? 'silver' : 'gold'} on Day ${day}`);
       }
 
