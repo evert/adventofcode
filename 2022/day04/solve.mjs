@@ -16,7 +16,7 @@ const part1 = pairs.filter(
 console.log('Part 1: %i', part1);
 
 const part2 = pairs.filter(
-  ([a1, a2, b1, b2]) => (a1 <= b2 && a2 >= b1) || (b1 <= a2 && b2 >= a1) 
+  ([a1, a2, b1, b2]) => (a1 <= b2 && a2 >= b1)
 ).length;
 
 console.log('Part 2: %i', part2);
