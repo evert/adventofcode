@@ -39,6 +39,21 @@ export function readInputFields(fieldSeparator = ',') {
 
 }
 
+/**
+ * Reads the input as grid of single-digit numbers.
+ *
+ * @returns {number[][]}
+ */
+export function readNumberGrid() {
+
+  return readInput()
+    .split('\n')
+    .map(row =>
+      row
+        .split('')
+        .map(n => +n)
+    );
+}
 
 /**
  * Given 2 strings, returns a new string with all the characters that appeared
