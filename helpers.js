@@ -74,3 +74,24 @@ export function commonChars(input1, input2) {
   return out;
 
 }
+
+/**
+ * Given an input array, return an array with every possible order of the input array
+ */
+export function permutations(input, listSoFar = []) {
+
+  const result = [];
+  for(const guest of input.values()) {
+
+    const newGuestList = new Set(input);
+    newGuestList.delete(guest);
+    if (newGuestList.size === 0) {
+      result.push([...listSoFar, guest]);
+    } else {
+      result.push(...permutations(newGuestList, [...listSoFar, guest]));
+    }
+
+  }
+  return result;
+
+}
