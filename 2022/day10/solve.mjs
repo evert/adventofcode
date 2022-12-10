@@ -22,10 +22,9 @@ for(const line of input) {
 function incCylce() {
 
   const offset = cycle % 40;
-  const spriteStart = xRegister-1;
 
   cycle++;
-  if ([spriteStart, spriteStart+1, spriteStart+2].includes(offset)) {
+  if (offset-xRegister>=-1 && offset-xRegister<=1) {
     process.stdout.write('#');
   } else {
     process.stdout.write('.');
