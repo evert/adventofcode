@@ -24,7 +24,7 @@ function incCylce() {
   const offset = cycle % 40;
 
   cycle++;
-  if (offset-xRegister>=-1 && offset-xRegister<=1) {
+  if (Math.abs(offset-xRegister)<=1) {
     process.stdout.write('#');
   } else {
     process.stdout.write('.');
