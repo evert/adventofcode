@@ -30,7 +30,7 @@ let bestPart2 = Infinity;
 const distances = new Map();
 distances.set(endPos.join(','),0);
 
-function findDistances(currentDistance, x, y, part = 1) {
+function findDistances(currentDistance, x, y) {
 
   const legalMoves = getLegalMoves([x,y]);
 
