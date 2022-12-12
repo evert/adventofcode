@@ -90,14 +90,15 @@ function getLegalMoves(pos) {
 }
 
 /**
- * Note that this checks the opposite move (walk backwards from end)
+ * This function checks if the elevation change for this move is legal.
+ *
+ * Note that since the algorithm starts at the end, it actually does the
+ * opposite check.
  */
 function isLegalMove(toPos, fromPos) {
 
   const fromElev = grid.at(...fromPos).charCodeAt();
   const toElev = grid.at(...toPos).charCodeAt();
-
-  // console.log(fromElev, toElev, (toElev-fromElev)<=1);
 
   return (toElev-fromElev)<=1;
 
