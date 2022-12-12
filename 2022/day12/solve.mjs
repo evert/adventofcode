@@ -24,72 +24,48 @@ const grid = input.map((c, x, y) => {
 
 });
 
-function findBestRoute(startPos) {
+let bestPart1 = Infinity;
+let bestPart2 = Infinity;
 
-  let bestRoute = Infinity;
+const distances = new Map();
+distances.set(endPos.join(','),0);
 
-  const distances = new Map();
-  distances.set(endPos.join(','),0);
+function findDistances(currentDistance, x, y, part = 1) {
 
-  let findDistances;
-  
-  findDistances = (currentDistance, x, y) => {
+  const legalMoves = getLegalMoves([x,y]);
 
-    const legalMoves = getLegalMoves([x,y]);
+  for(const newPos of legalMoves) {
 
-    for(const newPos of legalMoves) {
+    // console.log('%i,%i: %s', newPos[0], newPos[1], grid.at(...newPos));
 
-      // console.log('%i,%i: %s', newPos[0], newPos[1], grid.at(...newPos));
-
-      if (posEqual(newPos, startPos)) {
-        if (currentDistance+1 < bestRoute) {
-          // console.log('Found new best route. Distance: %i', currentDistance+1);
-          bestRoute = currentDistance+1;
-        }
+    if (posEqual(newPos, startPos)) {
+      if (currentDistance+1 < bestPart1) {
+        // console.log('Found new best route. Distance: %i', currentDistance+1);
+        bestPart1 = currentDistance+1;
       }
-
-      const alreadyFoundDistance = distances.get(newPos.join(','));
-      if (alreadyFoundDistance===undefined || alreadyFoundDistance > currentDistance+1) {
-        distances.set(newPos.join(','), currentDistance+1);
-        findDistances(currentDistance+1, ...newPos);
+    }
+    if (grid.at(...newPos) === 'a') {
+      if (currentDistance+1 < bestPart2) {
+        // console.log('Found new best route. Distance: %i', currentDistance+1);
+        bestPart2 = currentDistance+1;
       }
 
     }
 
-  }
-
-  findDistances(0, ...endPos);
-  return bestRoute;
-
-}
-
-console.log('Part 1: %i', findBestRoute(startPos));
-
-const allStartPositions = [];
-
-grid.walk((c, x, y) => {
-  if (c==='a') allStartPositions.push([x,y]);
-});
-
-console.log('Checking %i start positions', allStartPositions.length);
-
-let shortest = Infinity;
-
-for(const startPos of allStartPositions) {
-
-  process.stdout.write(startPos.join(',') + ': ');
-  const length = findBestRoute(startPos); 
-  console.log(length);
-  if (length < shortest) {
-
-    shortest = length;
+    const alreadyFoundDistance = distances.get(newPos.join(','));
+    if (alreadyFoundDistance===undefined || alreadyFoundDistance > currentDistance+1) {
+      distances.set(newPos.join(','), currentDistance+1);
+      findDistances(currentDistance+1, ...newPos);
+    }
 
   }
 
 }
 
-console.log('Part 2: %i', shortest);
+findDistances(0, ...endPos);
 
+console.log('Part 1: %i', bestPart1);
+console.log('Part 2: %i', bestPart2);
 
 function getLegalMoves(pos) {
 
