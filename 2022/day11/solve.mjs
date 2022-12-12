@@ -68,6 +68,13 @@ const newMonkeys = [...monkeys].sort((a, b) => b.counter - a.counter);
 
 console.log('Part 1: %i', newMonkeys[0].counter * newMonkeys[1].counter);
 
+/**
+ * Lowest common denominator of all divisors.
+ *
+ * We use this to reduce the 'worry level'.
+ *
+ * I looked up the answer to this, this is not my own invention =(
+ */
 const lcd = monkeys.reduce((acc, cur) => acc * cur.test,1);
 
 monkeys = originalMonkeys;
