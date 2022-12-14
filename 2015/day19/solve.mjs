@@ -33,12 +33,20 @@ let best = Infinity;
 let smallestString = Infinity;
 const skipBranches = new Set();
 
+const shuffle = (arr) => {
+
+  return arr
+    .map(item => [item, Math.random()])
+    .sort((a, b) => a[1]-b[1])
+    .map(([item]) => item);
+}
+
 function traverse(mol, count = 0) {
 
   if (skipBranches.has(mol)) return;
 
   let foundOne = false;
-  for(const [before, after] of replacements) {
+  for(const [before, after] of shuffle(replacements)) {
 
     if (mol.includes(after)) {
 
