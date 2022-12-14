@@ -105,6 +105,15 @@ export class Grid {
         }
         return new Grid(data);
     }
+    set(x, y, c) {
+        if (typeof c !== 'string' || c.length !== 1) {
+            throw new Error('Cell format must be a 1-byte string');
+        }
+        const row = this.data[y];
+        const start = row.substr(0, x);
+        const end = row.substr(x + 1);
+        this.data[y] = start + c + end;
+    }
     clone() {
         return new Grid([...this.data]);
     }

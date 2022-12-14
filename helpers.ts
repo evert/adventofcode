@@ -149,6 +149,18 @@ export class Grid {
 
   }
 
+  set(x: number, y: number, c:string) {
+
+    if (typeof c !== 'string' || c.length !== 1) {
+      throw new Error('Cell format must be a 1-byte string');
+    }
+    const row = this.data[y];
+    const start = row.substr(0, x);
+    const end = row.substr(x+1);
+    this.data[y] = start + c + end;
+
+  }
+
   clone(): Grid {
 
     return new Grid([...this.data]);
