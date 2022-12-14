@@ -46,6 +46,10 @@ function traverse(mol, count = 0) {
   if (skipBranches.has(mol)) return;
 
   let foundOne = false;
+  /**
+   * For some reason randomizing this makes this perform great, but not doing so makes it
+   * run forever. I got this off reddit so bit of a cheat.
+   */
   for(const [before, after] of shuffle(replacements)) {
 
     if (mol.includes(after)) {
